@@ -15,160 +15,175 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JScrollBar;
+import java.awt.FlowLayout;
+import java.awt.CardLayout;
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ScrollPaneConstants;
 
 public class ManagerView extends JPanel{
 	private JTable table;
+	private JTable table_1;
+	private JTable table_2;
 	public ManagerView() {
 		setSize(1280, 720);
-		setLayout(null);
+		setLayout(new GridLayout(1, 0, 0, 0));
 		
-		String title[] = {"id", "이름", "생일", "포인트"};
-		DefaultTableModel model = new DefaultTableModel(title, 0);
+		JPanel panel = new JPanel();
+		add(panel);
+		panel.setLayout(null);
 		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(12, 0, 402, 90);
+		panel.add(panel_3);
+		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel lblNewLabel = new JLabel("직원 관리");
+		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 40));
+		panel_3.add(lblNewLabel);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBounds(12, 100, 402, 70);
+		panel.add(panel_6);
+		panel_6.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JButton btnNewButton = new JButton("직원 추가");
+		btnNewButton.setFont(new Font("나눔고딕", Font.BOLD, 20));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//다이얼로그창 띄워 직원추가
+			}
+		});
+		panel_6.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("직원 삭제");
+		btnNewButton_1.setFont(new Font("나눔고딕", Font.BOLD, 20));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//목록 체크박스 활성화 -> 선택 후 버튼 삭제
+			}
+		});
+		panel_6.add(btnNewButton_1);
+		
+		//직원 관리 테이블 목록
+		String titleLabel[] = {"직원 번호", "직원 이름", "직원 전화번호","비고"};
+		DefaultTableModel model = new DefaultTableModel(titleLabel, 0);
 		table = new JTable(model);
-		
+			//테이블 데이터 입력
 		for (int i = 0; i < 30; i++) {
-			String test[] = { "", "","","" };
+			String test[] = { "", "", "", "" };
 			model.addRow(test);
 		}
 		table.setRowHeight(50);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(0, 717, 572, -618);
-		add(scrollPane);
+		scrollPane.setBounds(12, 180, 402, 530);
+		panel.add(scrollPane);
+		
+		JPanel panel_1 = new JPanel();
+		add(panel_1);
+		panel_1.setLayout(null);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(10, 0, 402, 90);
+		panel_1.add(panel_4);
+		
+		JLabel lblNewLabel_1 = new JLabel("회원 관리");
+		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 40));
+		panel_4.add(lblNewLabel_1);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBounds(10, 100, 402, 70);
+		panel_1.add(panel_7);
+		panel_7.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JButton btnNewButton_2 = new JButton("고객 추가");
+		btnNewButton_2.setFont(new Font("나눔고딕", Font.BOLD, 20));
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel_7.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("고객 삭제");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_3.setFont(new Font("나눔고딕", Font.BOLD, 20));
+		panel_7.add(btnNewButton_3);
+		
+		//고객관리 테이블 목록
+		String titleLabel1[] = {"고객 번호", "고객 이름", "보유 포인트","비고"};
+		DefaultTableModel model1 = new DefaultTableModel(titleLabel1, 0);
+		table_1 = new JTable(model1);
+		
+			//테이블 데이터 입력
+		for (int i = 0; i < 30; i++) {
+			String test1[] = { "", "", "", "" };
+			model1.addRow(test1);
+		}
+		table_1.setRowHeight(50);
+		
+		JScrollPane scrollPane_1 = new JScrollPane(table_1);
+		scrollPane_1.setBounds(10, 180, 402, 530);
+		panel_1.add(scrollPane_1);
+		
 
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 1142, 99);
-		add(panel);
-		panel.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		JLabel lblNewLabel = new JLabel("\uD68C\uC6D0\uBAA9\uB85D");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 18));
-		lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
-		panel.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("\uC7AC\uACE0\uAD00\uB9AC");
-		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 18));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblNewLabel_1);
-		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(570, 98, 572, 622);
 		add(panel_2);
-		panel_2.setLayout(new GridLayout(0, 5, 0, 0));
+		panel_2.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("\uCE74\uD14C\uACE0\uB9AC");
-		panel_2.add(lblNewLabel_2);
+		JPanel panel_5 = new JPanel();
+		panel_5.setBounds(12, 0, 400, 90);
+		panel_2.add(panel_5);
 		
-		JLabel lblNewLabel_16 = new JLabel("\uC0C1\uD488\uBA85");
-		panel_2.add(lblNewLabel_16);
+		JLabel lblNewLabel_2 = new JLabel("상품 관리");
+		lblNewLabel_2.setFont(new Font("맑은 고딕", Font.BOLD, 40));
+		panel_5.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_15 = new JLabel("\uC218\uB7C9");
-		panel_2.add(lblNewLabel_15);
+		JPanel panel_8 = new JPanel();
+		panel_8.setBounds(10, 100, 402, 70);
+		panel_2.add(panel_8);
+		panel_8.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JLabel lblNewLabel_14 = new JLabel("\uAC00\uACA9");
-		panel_2.add(lblNewLabel_14);
+		JButton btnNewButton_4 = new JButton("상품 추가");
+		btnNewButton_4.setFont(new Font("나눔고딕", Font.BOLD, 20));
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel_8.add(btnNewButton_4);
 		
-		JLabel lblNewLabel_13 = new JLabel("");
-		panel_2.add(lblNewLabel_13);
+		JButton btnNewButton_5 = new JButton("상품 삭제");
+		btnNewButton_5.setFont(new Font("나눔고딕", Font.BOLD, 20));
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel_8.add(btnNewButton_5);
 		
-		JLabel product_category01 = new JLabel("product_category01");
-		panel_2.add(product_category01);
+		//상품관리 테이블 목록
+		String titleLabel2[] = {"상품 번호", "카테고리", "상품 이름","상품 가격","수량","비고"};
+		DefaultTableModel model2 = new DefaultTableModel(titleLabel2, 0);
+		table_2 = new JTable(model2);
 		
-		JLabel product_name01 = new JLabel("New label");
-		panel_2.add(product_name01);
+			//테이블 데이터 입력
+		for (int i = 0; i < 30; i++) {
+			String test2[] = { "", "", "", "", "", "" };
+			model2.addRow(test2);
+		}
+		table_2.setRowHeight(50);
 		
-		JLabel product_conut01 = new JLabel("New label");
-		panel_2.add(product_conut01);
-		
-		JLabel product_price01 = new JLabel("New label");
-		panel_2.add(product_price01);
-		
-		JButton btn_modify01 = new JButton("New button");
-		panel_2.add(btn_modify01);
-		
-		JLabel product_category02 = new JLabel("New label");
-		panel_2.add(product_category02);
-		
-		JLabel product_name02 = new JLabel("New label");
-		panel_2.add(product_name02);
-		
-		JLabel product_conut02 = new JLabel("New label");
-		panel_2.add(product_conut02);
-		
-		JLabel product_price02 = new JLabel("New label");
-		panel_2.add(product_price02);
-		
-		JButton btn_modify02 = new JButton("New button");
-		panel_2.add(btn_modify02);
-		
-		JLabel product_category03 = new JLabel("New label");
-		panel_2.add(product_category03);
-		
-		JLabel product_name03 = new JLabel("New label");
-		panel_2.add(product_name03);
-		
-		JLabel product_conut03 = new JLabel("New label");
-		panel_2.add(product_conut03);
-		
-		JLabel product_price03 = new JLabel("New label");
-		panel_2.add(product_price03);
-		
-		JButton btn_modify03 = new JButton("New button");
-		panel_2.add(btn_modify03);
-		
-		JLabel product_category04 = new JLabel("New label");
-		panel_2.add(product_category04);
-		
-		JLabel product_name04 = new JLabel("New label");
-		panel_2.add(product_name04);
-		
-		JLabel product_conut04 = new JLabel("New label");
-		panel_2.add(product_conut04);
-		
-		JLabel product_price04 = new JLabel("New label");
-		panel_2.add(product_price04);
-		
-		JButton btn_modify04 = new JButton("New button");
-		panel_2.add(btn_modify04);
-		
-		JLabel product_category05 = new JLabel("New label");
-		panel_2.add(product_category05);
-		
-		JLabel product_name05 = new JLabel("New label");
-		panel_2.add(product_name05);
-		
-		JLabel product_conut05 = new JLabel("New label");
-		panel_2.add(product_conut05);
-		
-		JLabel product_price05 = new JLabel("New label");
-		panel_2.add(product_price05);
-		
-		JButton btn_modify05 = new JButton("New button");
-		panel_2.add(btn_modify05);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(1141, 98, 139, 622);
-		add(panel_3);
-		panel_3.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JButton btn_product_add = new JButton("\uC0C1\uD488\uCD94\uAC00");
-		panel_3.add(btn_product_add);
-		
-		JButton btn_member_add = new JButton("\uD68C\uC6D0\uCD94\uAC00");
-		panel_3.add(btn_member_add);
-		
-		JButton btn_member_del = new JButton("\uD68C\uC6D0\uC0AD\uC81C");
-		panel_3.add(btn_member_del);
-		
-		JButton btn_employee_add = new JButton("\uC9C1\uC6D0\uCD94\uAC00");
-		panel_3.add(btn_employee_add);
-		
-		JButton btn_employee_del = new JButton("\uC9C1\uC6D0\uC0AD\uC81C");
-		panel_3.add(btn_employee_del);
+		JScrollPane scrollPane_2 = new JScrollPane(table_2);
+		scrollPane_2.setBounds(12, 180, 402, 530);
+		panel_2.add(scrollPane_2);
 		
 		
-		setVisible(true);
 	}
 }
