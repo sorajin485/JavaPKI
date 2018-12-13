@@ -1,3 +1,6 @@
+#eclipse & java env ignore
 .settings/
 .classpath
 .project
+*.class
+

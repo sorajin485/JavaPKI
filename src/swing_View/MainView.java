@@ -28,6 +28,8 @@ import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -39,11 +41,13 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JDesktopPane;
 import javax.swing.JList;
+import java.awt.Panel;
 
 public class MainView extends JPanel {
 	private JTextField tf_memberId;
 	private JTextField tf_point;
 	private JTable table;
+	private JTable table_1;
 
 	public MainView() {
 		setSize(1280, 720);
@@ -147,82 +151,34 @@ public class MainView extends JPanel {
 		productMenuPanel.add(product024);
 		
 		JPanel orderPanel = new JPanel();
-		orderPanel.setBounds(472, 0, 355, 474);
+		orderPanel.setBounds(472, 0, 355, 537);
 		add(orderPanel);
-		orderPanel.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		JLabel productName = new JLabel("New label");
-		orderPanel.add(productName);
 		
-		JLabel productCount = new JLabel("New label");
-		orderPanel.add(productCount);
 		
-		JLabel productAmount = new JLabel("New label");
-		orderPanel.add(productAmount);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_1);
+		//상품 클릭시 메뉴 수량 금액 테이블 뷰
+		String title2[] = {"메뉴", "수량", "금액"};
+		DefaultTableModel model2 = new DefaultTableModel(title2, 0);
+		orderPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		table_1 = new JTable(model2);
+		for (int i = 0; i < 30; i++) {
+			String test[] = { "", "", "", "" };
+			model2.addRow(test);
+		}
+		table_1.setRowHeight(50);
+		JScrollPane scrollPane2 = new JScrollPane(table_1);
+		orderPanel.add(scrollPane2);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		orderPanel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_5);
-		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_6);
-		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_7);
-		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_8);
-		
-		JLabel lblNewLabel_9 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_9);
-		
-		JLabel lblNewLabel_10 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_10);
-		
-		JLabel lblNewLabel_11 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_11);
-		
-		JLabel lblNewLabel_12 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_12);
-		
-		JLabel lblNewLabel_13 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_13);
-		
-		JLabel lblNewLabel_14 = new JLabel("New label");
-		orderPanel.add(lblNewLabel_14);
-		
-		JLabel totalAmount = new JLabel("New label");
-		totalAmount.setBounds(472, 474, 57, 15);
-		add(totalAmount);
-		
-		JLabel receiveAmount = new JLabel("New label");
-		receiveAmount.setBounds(472, 499, 57, 15);
-		add(receiveAmount);
-		
-		JLabel change = new JLabel("New label");
-		change.setBounds(472, 524, 57, 15);
-		add(change);
 		
 		tf_memberId = new JTextField();
 		tf_memberId.setBounds(996, 39, 116, 21);
 		add(tf_memberId);
 		tf_memberId.setColumns(10);
 		
-		JLabel label = new JLabel("\u314E\uD638\uD68C\uD6A1\uD68C\uC6B0\uC6CC\uC6D0\uC6D0");
+		JLabel label = new JLabel("\uD68C\uC6D0");
 		label.setBounds(876, 42, 108, 15);
 		add(label);
 		
@@ -262,6 +218,29 @@ public class MainView extends JPanel {
 		JButton btn_inputPoint = new JButton("inputPoint");
 		btn_inputPoint.setBounds(1078, 167, 87, 23);
 		add(btn_inputPoint);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(472, 547, 355, 100);
+		add(panel);
+		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel receiveAmount = new JLabel("New label");
+		panel.add(receiveAmount);
+		
+		JLabel change = new JLabel("New label");
+		panel.add(change);
+		
+		JLabel lblNewLabel_15 = new JLabel("New label");
+		panel.add(lblNewLabel_15);
+		
+		JLabel lblNewLabel_16 = new JLabel("New label");
+		panel.add(lblNewLabel_16);
+		
+		JLabel lblNewLabel_17 = new JLabel("New label");
+		panel.add(lblNewLabel_17);
+		
+		JLabel label_1 = new JLabel("New label");
+		panel.add(label_1);
 
 		
 		setVisible(true);
